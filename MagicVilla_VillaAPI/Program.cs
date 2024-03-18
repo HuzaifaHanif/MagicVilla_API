@@ -1,5 +1,7 @@
 using MagicVilla_VillaAPI;
-using MagicVilla_VillaAPI.DTO;
+using MagicVilla_VillaAPI.Models.DTO;
+using MagicVilla_VillaAPI.Repository;
+using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSqlConnection"));
 });
 
+builder.Services.AddScoped<IVillaRepository,VillaRepository>();
+builder.Services.AddScoped<IVillaNumberRepository,VillaNumberRepository>();
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 
