@@ -7,7 +7,8 @@ namespace MagicVilla_VillaAPI.Models.DTO
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
-
+        
+        public DbSet<LocalUser> Users { get; set; }
         public DbSet<Villa> Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers { get; set; }
 
